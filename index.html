@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>むりしないヨガ</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --paper: #fffdf9;
+      --ink: #3f413d;
+      --muted: #7a7d76;
+      --line: #e6dfd4;
+      --accent: #c7d7d0;
+      --accent-2: #e7cfc4;
+      --shadow: 0 10px 30px rgba(80, 70, 55, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, #f2ece3 0%, transparent 35%),
+        linear-gradient(180deg, #f8f6f1 0%, #f3efe8 100%);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 72px 0 28px;
+    }
+
+    .hero {
+      background: rgba(255, 253, 249, 0.88);
+      border: 1px solid rgba(230, 223, 212, 0.9);
+      border-radius: 28px;
+      padding: 44px 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #f0ebe4;
+      color: var(--muted);
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.25;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 44rem;
+    }
+
+    .section {
+      padding: 18px 0 12px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(80, 70, 55, 0.12);
+      border-color: #d8cdbc;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #f4efe8;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .meta {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .panel {
+      background: rgba(255, 253, 249, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .audio-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .audio-item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: #fffdf9;
+    }
+
+    .audio-item h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .audio-item p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+      transition: transform 0.16s ease, background 0.16s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: #faf7f2;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: transparent;
+    }
+
+    .button.warm {
+      background: var(--accent-2);
+      border-color: transparent;
+    }
+
+    footer {
+      padding: 36px 0 56px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .small {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding-top: 44px;
+      }
+      .hero {
+        padding: 28px 18px;
+      }
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="hero">
+        <div class="eyebrow">むりしないヨガ</div>
+        <h1>いまの気分にあわせて、<br>ゆるく耳を傾ける場所。</h1>
+        <p class="lead">
+          疲れた日、ぼんやりしたい日、ちょっとだけ整えたい日。<br>
+          その日の気分にあわせて、短い音声や休息の時間を選べる入口です。
+        </p>
+        <div class="buttons">
+          <a class="button primary" href="#mood">いまの気分から選ぶ</a>
+          <a class="button" href="#free">無料で聴く</a>
+          <a class="button warm" href="#paid">有料音声へ</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="mood">
+        <h2 class="section-title">いまの気分から選ぶ</h2>
+        <div class="grid">
+          <a class="card" href="#free">
+            <div>
+              <div class="tag">つかれた日</div>
+              <h3>今日はもう閉店です</h3>
+              <p>気力が切れた日のための、短い休息音声。がんばらないで着地したい日に。</p>
+            </div>
+            <div class="meta">3分〜8分</div>
+          </a>
+
+          <a class="card" href="#free">
+            <div>
+              <div class="tag">眠る前</div>
+              <h3>静かにほどく夜</h3>
+              <p>眠る前に呼吸を落ち着けたいとき、考えごとが散らばっているときに。</p>
+            </div>
+            <div class="meta">5分〜12分</div>
+          </a>
+
+          <a class="card" href="#free">
+            <div>
+              <div class="tag">ちょっと整えたい</div>
+              <h3>3分だけ戻る</h3>
+              <p>朝、外出前、気持ちを切り替えたいときに。長くなくていい日のための音声。</p>
+            </div>
+            <div class="meta">約3分</div>
+          </a>
+
+          <a class="card" href="#free">
+            <div>
+              <div class="tag">声がほしい日</div>
+              <h3>小さなラジオの部屋</h3>
+              <p>だれかの声が少しだけほしい日に。生活の温度が残る、短いラジオ風音声。</p>
+            </div>
+            <div class="meta">4分〜10分</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="free">
+        <h2 class="section-title">無料で聴ける音声</h2>
+        <div class="panel audio-list">
+          <div class="audio-item">
+            <h4>今日はもう閉店です</h4>
+            <p>疲れた日のための短い音声。とりあえず呼吸だけ戻したいときに。</p>
+            <audio controls preload="none">
+              <source src="audio/heiten-mode.mp3" type="audio/mpeg">
+              お使いのブラウザでは音声を再生できません。
+            </audio>
+          </div>
+
+          <div class="audio-item">
+            <h4>3分だけ戻る</h4>
+            <p>朝や外出前に、自分の感覚へ少し戻るための短いガイド。</p>
+            <audio controls preload="none">
+              <source src="audio/3min-reset.mp3" type="audio/mpeg">
+              お使いのブラウザでは音声を再生できません。
+            </audio>
+          </div>
+
+          <div class="audio-item">
+            <h4>小さなラジオの部屋</h4>
+            <p>少しだけ声がほしい日のための、短いラジオ風音声。</p>
+            <audio controls preload="none">
+              <source src="audio/radio-room.mp3" type="audio/mpeg">
+              お使いのブラウザでは音声を再生できません。
+            </audio>
+          </div>
+          <p class="small">※ 音声ファイル名は仮です。あとで自分のMP3に差し替えて使えます。</p>
+        </div>
+      </section>
+
+      <section class="section" id="paid">
+        <h2 class="section-title">有料音声</h2>
+        <div class="panel">
+          <p>
+            もう少し長く休みたい日の音声や、テーマごとにまとまった音声は、今後リリースする予定です。
+          
+          </p>
+          <div class="buttons">
+            <a class="button warm" href="https://note.com/" target="_blank" rel="noopener noreferrer">noteの有料記事へ（あとで差し替え）</a>
+            <a class="button" href="https://squareup.com/" target="_blank" rel="noopener noreferrer">Square決済リンクへ（あとで差し替え）</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <h2 class="section-title">この場所について</h2>
+        <div class="panel">
+          <p>
+            がんばれない日にも、少しだけ寄れる場所を作りたくて、このページを作りました。<br>
+            毎日ちゃんとしなくていい。今日は今日のぶんだけ、戻れたらそれでOK。<br>
+            そんな気持ちで使える、ゆるい音声の家です。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>静かな音声の家 / made for slow days</div>
+    </footer>
+  </div>
+</body>
+</html>
